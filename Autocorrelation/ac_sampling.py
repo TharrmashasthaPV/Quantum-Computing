@@ -30,7 +30,6 @@ shots = 2048
 backend = IBMQ.get_backend('ibmq_qasm_simulator')
 
 
-
 #Setting up registers and creating a circuit.
 
 q = QuantumRegister(2*n)
@@ -39,37 +38,29 @@ c = ClassicalRegister(2*n)
 qc = QuantumCircuit(q,c)
 
 
-
 #Building the circuit.
 
 '''Building the sampling circuit.'''
 
 for i in range(2*n):
     qc.h(q[i])
-
 oracle1(qc,q,0,anc)
-
 for j in range(n):
     qc.cx(q[j],q[j+n])
-
 oracle1(qc,q,0,anc)
-
 for j in range(n):
     qc.cx(q[j],q[j+n])
 
 qc.measure(q,c)
 
 
-
 #Executing the circuit and getting the result.
 
 qjob = execute(qc, shots=shots, backend=backend)
 job_monitor(qjob)
-
 result = qjob.result()
 stats = result.get_counts()
 #print(stats)
-
 
 
 #Printing the selected outputs.
