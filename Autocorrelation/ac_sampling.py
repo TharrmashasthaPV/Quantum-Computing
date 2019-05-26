@@ -13,8 +13,8 @@
 
 from qiskit import *
 from qiskit.tools.monitor import job_monitor
-from four_bit_oracles import oracle1, oracle2, oracle3
-from four_bit_oracles import oracle4, oracle5, oracle6
+from custom_oracles import oracle1, oracle2, oracle3
+from custom_oracles import oracle4, oracle5, oracle6
 
 
 
